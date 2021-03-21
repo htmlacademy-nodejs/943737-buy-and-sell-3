@@ -19,6 +19,7 @@ const {
   DEFAULT_FILE_NAME
 } = require(`./generate.constants`);
 const {ExitCode} = require(`../../constants`);
+const chalk = require(`chalk`);
 
 const getPictureFileName = (number) => {
   const pictureNumber = number < 10 ? `0` + number : number;
@@ -40,18 +41,18 @@ const generateOffers = (count) => (
 
 module.exports = {
   name: `--generate`,
-  run(args) {
+  async run(args) {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
     if (countOffer > MAX_COUNT_OFFER) {
-      console.error(`Не больше ${MAX_COUNT_OFFER} объявлений`);
+      console.error(chalk.red(`Не больше ${MAX_COUNT_OFFER} объявлений`));
       process.exit(ExitCode.ERROR);
     }
 
     const content = generateOffers(countOffer);
 
-    writeJsonFile(content, DEFAULT_FILE_NAME);
+    await writeJsonFile(content, DEFAULT_FILE_NAME);
   }
 };
 
