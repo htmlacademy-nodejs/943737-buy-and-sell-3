@@ -30,7 +30,7 @@ const getPictureFileName = (number) => {
 };
 
 const generateOffers = (count, titles, categories, sentences) => (
-  Array(count).fill({}).map(() => ({
+  new Array(count).fill({}).map(() => ({
     category: getRandomItemFromArray(categories),
     description: shuffle(sentences).slice(1, 5).join(` `),
     picture: getPictureFileName(getRandomInt(PICTURE_RESTRICT.MIN, PICTURE_RESTRICT.MAX)),

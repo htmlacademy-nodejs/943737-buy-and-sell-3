@@ -1,29 +1,40 @@
 'use strict';
 
-module.exports.DEFAULT_COUNT = 10;
+const DEFAULT_COUNT = 10;
 
-module.exports.MAX_COUNT_OFFER = 1000;
+const MAX_COUNT_OFFER = 1000;
 
-module.exports.DEFAULT_FILE_NAME = `mocks.json`;
+const DEFAULT_FILE_NAME = `mocks.json`;
 
-module.exports.FILE_TITLES_PATH = `./data/titles.txt`;
+const FILE_TITLES_PATH = `./data/titles.txt`;
 
-module.exports.FILE_SENTENCES_PATH = `./data/sentences.txt`;
+const FILE_SENTENCES_PATH = `./data/sentences.txt`;
 
-module.exports.FILE_CATEGORIES_PATH = `./data/categories.txt`;
+const FILE_CATEGORIES_PATH = `./data/categories.txt`;
 
-module.exports.OFFER_TYPE = {
+const OFFER_TYPE = {
   OFFER: `offer`,
   SALE: `sale`,
 };
 
-
-module.exports.SUM_RESTRICT = {
+const SUM_RESTRICT = {
   MIN: 1000,
   MAX: 100000,
 };
 
-module.exports.PICTURE_RESTRICT = {
+const PICTURE_RESTRICT = {
   MIN: 1,
   MAX: 16,
+};
+
+module.exports = {
+  DEFAULT_COUNT,
+  MAX_COUNT_OFFER,
+  DEFAULT_FILE_NAME,
+  FILE_CATEGORIES_PATH,
+  FILE_SENTENCES_PATH,
+  FILE_TITLES_PATH,
+  OFFER_TYPE,
+  SUM_RESTRICT,
+  PICTURE_RESTRICT,
 };
