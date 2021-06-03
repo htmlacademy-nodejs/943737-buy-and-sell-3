@@ -3,13 +3,13 @@
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
 
-module.exports.getRandomInt = (min, max) => {
+const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-module.exports.shuffle = (someArray) => {
+const shuffle = (someArray) => {
   for (let i = someArray.length - 1; i > 0; i--) {
     const randomPosition = Math.floor(Math.random() * i);
     [someArray[i], someArray[randomPosition]] = [someArray[randomPosition], someArray[i]];
@@ -18,7 +18,7 @@ module.exports.shuffle = (someArray) => {
   return someArray;
 };
 
-module.exports.writeJsonFile = async (content, fileName) => {
+const writeJsonFile = async (content, fileName) => {
   const contentFile = JSON.stringify(content);
 
   try {
@@ -30,14 +30,33 @@ module.exports.writeJsonFile = async (content, fileName) => {
   }
 };
 
-module.exports.getRandomItemFromArray = (array) => {
+const getRandomItemFromArray = (array) => {
   const randomItem = [array[exports.getRandomInt(0, array.length - 1)]];
 
   return randomItem;
 };
 
-module.exports.getRandomPropertyValue = (object) => {
+const getRandomPropertyValue = (object) => {
   const randomPropertyValue = object[Object.keys(object)[Math.floor(Math.random() * Object.keys(object).length)]];
 
   return randomPropertyValue;
+};
+
+const readContent = async (filePath) => {
+  try {
+    const content = await fs.readFile(filePath, `utf8`);
+    return content.split(`\n`);
+  } catch (err) {
+    console.error(chalk.red(err));
+    return [];
+  }
+};
+
+module.exports = {
+  readContent,
+  getRandomItemFromArray,
+  getRandomPropertyValue,
+  getRandomInt,
+  writeJsonFile,
+  shuffle,
 };
