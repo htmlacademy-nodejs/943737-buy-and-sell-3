@@ -31,7 +31,7 @@ const writeJsonFile = async (content, fileName) => {
 };
 
 const getRandomItemFromArray = (array) => {
-  const randomItem = [array[exports.getRandomInt(0, array.length - 1)]];
+  const randomItem = [array[getRandomInt(0, array.length - 1)]];
 
   return randomItem;
 };
